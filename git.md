@@ -12,7 +12,8 @@ $ git config --global user.email "YOUR EMAIL ADDRESS"
 $ git clone https://github.com/github아이디/repository이름.git
 
 ### 파일 수정 후 등록하기 
-$ git add . // git 파일 리스트에 파일 등록 <br>
+$ git add . // 수정된 파일 모두 <br>
+or $ git add "파일이름" // 특정 파일
 $ git commit -m "설명" // commit설명, 등록완료 <br>
 $ git push -u origin master  // github에 올리기 
 

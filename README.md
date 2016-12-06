@@ -1,5 +1,5 @@
 ******************************************************
-# SunS(썬쓰)
+# SunS(썬즈)
 #### Team Portpolio &amp; Study
 
 공통 프로젝트 개발을 통해 더 나은 코드로 Upgrade & Refactoring

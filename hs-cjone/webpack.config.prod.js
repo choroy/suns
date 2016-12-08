@@ -44,10 +44,19 @@ module.exports = {
       exclude: /(node_modules|bower_components)/
     }, {
       test: /\.css$/,
-      loader: ExtractTextPlugin.extract('style', 'css!postcss-loader')
+      loader: ExtractTextPlugin.extract('style', 'css!postcss-loader', {publicPath: '../'}),
     }, {
       test: /\.scss$/,
-      loader: ExtractTextPlugin.extract('style', 'css!sass!postcss-loader')
-    },]
+      loader: ExtractTextPlugin.extract('style', 'css!sass!postcss-loader', {publicPath: '../'})
+    }, {
+      test: /\.woff(2)?(\?v=[0-9]\.[0-9]\.[0-9])?$/,
+      loader: 'url?limit=10000&mimetype=application/font-woff&name=fonts/[name].[ext]'
+    }, {
+      test: /\.(ttf|eot|svg)(\?v=[0-9]\.[0-9]\.[0-9])?$/,
+      loader: 'file?name=fonts/[name].[ext]'
+    }, {
+      test: /\.(jp(e)g|gif|png)?$/,
+      loader: 'file?name=img/[name].[ext]'
+    }]
   }
 };

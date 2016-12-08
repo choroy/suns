@@ -11,7 +11,7 @@
 
 - [x] `SASS` to CSS <br>
 - [x] `반응형웹` : 현재는 반응형이 아닌 모바일용, 데스크탑용이 따로 개발되어 있음  <br>
-- [ ] Task Runner `Gulp` or 모듈화도구 `Webpack`으로 관리 <br>
+- [x] 모듈 번들러인 `Webpack`으로 관리 <br>
 
 ## 개발 진행 상황
 

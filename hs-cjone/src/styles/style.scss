@@ -1,0 +1,10 @@
+$main-color: green;
+
+h1 {
+  color: blue;
+}
+
+p {
+  color: $main-color;
+  margin-left: 20px;
+}

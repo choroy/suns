@@ -1,0 +1,69 @@
+// @SharryHong
+
+@import helper/variables
+@import base/normalize
+@import base/grid
+@import base/common
+@import base/typography
+@import module/button
+@import module/mixin
+
+.header-wrap
+	height: 120px
+	background: $header-bg
+
+	.page-header
+		position: relative
+		@include marginCenter()
+		padding-top: 58px
+		h1
+			float: left
+
+	.user-wrap
+		@extend %small
+		position: absolute
+		top: 12px
+		right: 0
+		a 
+			padding: 3px 5px
+		.user-center
+			float: left
+			padding: 3px 18px 3px 0
+			li
+				float: left
+				padding-left: 9px
+		a 
+			&:hover
+				@include transitions()
+				color: #fff
+		.card
+			display: inline-block
+			background-color: #2d2d2d
+	.gnb
+		float: left
+		width: 65%
+		margin-top: 16px
+		margin-left: 7%
+		color: #fff
+		li
+			display: inline-block
+			padding-left: 7%
+			a 	
+				&:hover
+					@include transitions()
+					color: $main-color
+	.search-now
+		float: right
+		.page-search
+			display: inline-block
+			width: 24px
+			height: 24px
+			margin-right: 20px
+			background: 0 0 url("../img/btn_gnb_search.png") 
+			vertical-align: super
+		.now 
+			display: inline-block
+			width: 55px
+			height: 45px
+			background: url("../img/user-now.png") no-repeat
+			background-size: contain

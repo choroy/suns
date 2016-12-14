@@ -1,0 +1,29 @@
+$base-font: 'Noto Sans', sans-serif;
+
+$base-font-size: 1rem; // 16px
+$base-line-height: 1.5;
+$font-base-color: #888;
+
+$small-font: 0.75rem; // 12px
+
+body {
+	font-family: $base-font;
+	font-size: $base-font-size;
+	color: $font-base-color;
+}
+
+p {
+	font-size: $base-font-size;
+	line-height: $base-line-height;
+}
+
+
+h1,h2,h3,h4,h5,h6 {
+	margin-top: 0;
+	margin-bottom: 0;
+	font-weight: normal;
+}
+
+%small {
+	font-size: $small-font;
+}

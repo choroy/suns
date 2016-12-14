@@ -1,0 +1,8 @@
+// transition관련 믹스인
+@mixin transitions($type: all, $time: 0.3s, $timing: ease-out) 
+	transition: $type $time $timing
+
+// 중앙으로 위치시키기 
+@mixin marginCenter($width: 1060px)
+	max-width: $width
+	margin: 0 auto

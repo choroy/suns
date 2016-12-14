@@ -3,12 +3,14 @@ const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const autoprefixer = require('autoprefixer');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
-  
 module.exports = {
-  entry: './src/scripts/entry-index.js',
+  entry: {
+    index: './src/scripts/entry-index.js',
+    sub: './src/scripts/entry-sub.js'
+  },
   output: {
     path: './dist',
-    filename: 'scripts/bundle.js',
+    filename: 'scripts/[name].bundle.js',
   },
   plugins: [
     new CleanWebpackPlugin(['dist']),
@@ -23,6 +25,7 @@ module.exports = {
     new webpack.optimize.OccurrenceOrderPlugin(),
     new HtmlWebpackPlugin({
       template: './src/index.html',
+      chunks: ['index'],
       minify: {
         collapseWhitespace: true,
         keepClosingSlash: true,
@@ -30,7 +33,18 @@ module.exports = {
       },
       xhtml: true
     }),
-    new ExtractTextPlugin('styles/bundle.css')
+    new HtmlWebpackPlugin({
+      template: './src/sub.html',
+      filename: 'sub.html',
+      chunks: ['sub'],
+      minify: {
+        collapseWhitespace: true,
+        keepClosingSlash: true,
+        removeComments: true,
+      },
+      xhtml: true
+    }),
+    new ExtractTextPlugin('style/[name].bundle.css')
   ],
   postcss: [
     autoprefixer({

@@ -1,51 +1,42 @@
 {
-  "name": "hs-cjone",
-  "version": "1.0.0",
-  "description": "- [x] 시멘틱한 마크업 <br>\r - [x] 웹표준, 웹접근성 <br>\r - [x] 크로스브라우징 : `IE8`. (CSS3 Animation 등 일부 기능은 IE10부터(속도 문제 등 고려))\r - [x] 유지보수에 적합한 구조 설계 <br>",
-  "main": "bundle.js",
-  "dependencies": {
-    "autoprefixer": "^6.5.3",
-    "babel-core": "^6.18.2",
-    "babel-loader": "^6.2.9",
-    "babel-preset-latest": "^6.16.0",
-    "bootstrap": "^3.3.7",
-    "clean-webpack-plugin": "^0.1.14",
-    "css-loader": "^0.26.1",
-    "extract-text-webpack-plugin": "^1.0.1",
-    "font-awesome": "^4.7.0",
-    "html-webpack-plugin": "^2.24.1",
-    "jquery": "^3.1.1",
-    "node-sass": "^3.13.0",
-    "postcss-loader": "^1.2.0",
-    "raw-loader": "^0.5.1",
-    "sass-loader": "^4.0.2",
-    "style-loader": "^0.13.1",
-    "webpack": "^1.14.0",
-    "webpack-browser-plugin": "^1.0.20",
-    "webpack-dev-server": "^1.16.2",
-    "webpack-strip": "^0.1.0"
-  },
+  "name": "gulp-angularjs-startkit",
+  "version": "0.0.2",
+  "description": "AngularJS, Sass, Browserify 프로젝트 스타트킷",
   "devDependencies": {
-    "autoprefixer": "^6.5.3",
-    "babel-core": "^6.18.2",
-    "babel-loader": "^6.2.9",
-    "babel-preset-latest": "^6.16.0",
-    "css-loader": "^0.26.1",
-    "file-loader": "^0.9.0",
-    "html-webpack-plugin": "^2.24.1",
-    "node-sass": "^3.13.0",
-    "postcss-loader": "^1.2.0",
-    "sass-loader": "^4.0.2",
-    "style-loader": "^0.13.1",
-    "url-loader": "^0.5.7",
-    "webpack": "^1.14.0"
+    "browser-sync": "^2.10.0",
+    "browserify": "^12.0.1",
+    "browserify-shim": "^3.8.11",
+    "gulp": "^3.9.1",
+    "gulp-if": "^2.0.0",
+    "gulp-sass": "^2.1.0",
+    "gulp-sourcemaps": "^1.6.0",
+    "gulp-uglify": "^1.5.1",
+    "gulp-util": "^3.0.7",
+    "modernizr": "^3.2.0",
+    "process": "^0.11.2",
+    "requirejs": "^2.1.22",
+    "vinyl-buffer": "^1.0.0",
+    "vinyl-source-stream": "^1.1.0"
   },
-  "scripts": {
-    "dev": "webpack-dev-server -d --config webpack.config.dev.js",
-    "build": "webpack --config webpack.config.prod.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+  "dependencies": {},
+  "browserify": {
+    "transform": [
+      "browserify-shim"
+    ]
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC"
+  "browser": {
+    "jquery": "./src/components/jquery/dist/jquery.min.js",
+    "modernizr": "./src/components/modernizr-min/dist/modernizr.min.js",
+    "angular": "./src/components/angular/angular.min.js",
+    "angular-route": "./src/components/angular-route/angular-route.min.js",
+    "angular-animate": "./src/components/angular-animate/angular-animate.min.js"
+  },
+  "browserify-shim": {
+    "jquery": {
+      "exports": "$"
+    },
+    "angular": {
+      "exports": "angular"
+    }
+  }
 }

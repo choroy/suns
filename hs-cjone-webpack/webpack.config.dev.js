@@ -1,23 +1,37 @@
-
-const path = require('path');
 const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const autoprefixer = require('autoprefixer');
 const WebpackBrowserPlugin = require('webpack-browser-plugin');
+const dev = [
+  'webpack-dev-server/client?http://localhost:8080',
+  'webpack/hot/dev-server'
+];
 module.exports = {
   devtool: 'cheap-eval-source-map',
-  entry: [
-    'webpack-dev-server/client?http://localhost:8080',
-    'webpack/hot/dev-server',
-    './src/scripts/entry-index.js'
-  ],
+  entry: {
+    index: [
+      dev[0], dev[1],
+      './src/scripts/entry-index.js'
+    ],
+    sub: [
+      dev[0], dev[1],
+      './src/scripts/entry-sub.js'
+    ]
+  },
   output: {
-    filename: 'scripts/bundle.js',
+    publicPath: 'http://127.0.0.1:8080/',
+    filename: 'scripts/[name].bundle.js',
   },
   plugins: [
     new webpack.HotModuleReplacementPlugin(),
     new HtmlWebpackPlugin({
-      template: './src/index.html'
+      template: './src/index.html',
+      chunks: ['index']
+    }),
+    new HtmlWebpackPlugin({
+      template: './src/sub.html',
+      filename: 'sub.html',
+      chunks: ['sub']
     }),
     new WebpackBrowserPlugin()
   ],
@@ -39,17 +53,17 @@ module.exports = {
       loaders: ['style', 'css?sourceMap,-minimize', 'sass?sourceMap,outputStyle=expanded', 'postcss-loader']
     }, {
       test: /\.html$/,
-      loader: 'raw-loader'
+      loader: 'raw'
     }, {
-	  test: /\.woff(2)?(\?v=[0-9]\.[0-9]\.[0-9])?$/,
-	  loader: 'url?limit=10000&mimetype=application/font-woff&name=fonts/[name].[ext]'
-	}, {
-	  test: /\.(ttf|eot|svg)(\?v=[0-9]\.[0-9]\.[0-9])?$/,
-	  loader: 'file?name=fonts/[name].[ext]'
-	}, {
-	  test: /\.(jp(e)g|gif|png)?$/,
-	  loader: 'file?name=img/[name].[ext]'
-	}]
+      test: /\.woff(2)?(\?v=[0-9]\.[0-9]\.[0-9])?$/,
+      loader: 'url?limit=10000&mimetype=application/font-woff&name=fonts/[name].[ext]'
+    }, {
+      test: /\.(ttf|eot|svg)(\?v=[0-9]\.[0-9]\.[0-9])?$/,
+      loader: 'file?name=fonts/[name].[ext]'
+    }, {
+      test: /\.(jp(e)g|gif|png)?$/,
+      loader: 'file?name=img/[name].[ext]'
+    }]
   },
   devServer: {
     hot: true
